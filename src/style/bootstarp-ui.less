@@ -1,0 +1,17 @@
+//使每列都高度100%占满,清除边距
+.row {
+    flex-wrap: nowrap;
+    height: 100%;
+    margin: 0;
+}
+
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+
+    >.col,
+    >[class*="col-"] {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
