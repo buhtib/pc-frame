@@ -13,11 +13,17 @@ let routes = [
     {
         path: '/',
         name: 'home',
+        meta:{
+            title: '首页'
+        },
         component: () => import( /* webpackChunkName: "page" */ '@/page/Home/Home.vue')
     },
     {
         name: '404',
         path: '/404',
+        meta:{
+            title: '404'
+        },
         component: NotFound
     },
     {
@@ -33,6 +39,11 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
     NProgress.start();
+    //对网页 title 进行改变
+    const title = to.meta && to.meta.title;
+    if (title) {
+      document.title = title;
+    }
     next();
 })
 
