@@ -1,5 +1,5 @@
 let md5 = require('js-md5')
-import fetch from '@/api/fetch.js'
+import axios from '@/api'
 
 /**
  * 全局方法
@@ -17,13 +17,11 @@ export default  (Vue) => {
     window._md5 = md5
 
     /**
-     * 将fetch api请求的方法挂在window上
+     * 将axios api请求的方法挂在window上
      * 
-     * @param url = '', data = {}, type = 'GET/POST', method = 'fetch'
-     * @example  fetch('str', {}, 'GET')
-     * @return promise
+     * @example  axios.get(url, params) | axios.post(url, params)
      */
-    window._fetch = fetch
+    window._axios = axios
 
      /**
      * 将消息提示 方法挂在window上

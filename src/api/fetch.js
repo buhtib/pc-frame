@@ -1,4 +1,4 @@
-import { baseUrl } from './env'
+import { baseUrl } from './config'
 /**
  * 引入 antd-vue的提示方法
  */
@@ -27,7 +27,7 @@ export default async(url = '', data = {}, type = 'GET', method = 'fetch') => {
             credentials: 'include',
             method: type,
             headers: {
-                // 'Accept': 'application/json',   
+                'Accept': 'application/json',   
                 'Content-Type': 'application/json'
             },
             mode: "cors", // 以CORS的形式跨域
@@ -45,13 +45,14 @@ export default async(url = '', data = {}, type = 'GET', method = 'fetch') => {
             /**
              * 这里为 response.json()会报错 不知道是什么情况
              */
+            
             const responseJson = await response.json();
 
             /**
              * status 不是200 提示错误信息
              */
             if (response.status != 200) {
-                Message.error(responseJson)
+                Message.error(response.statusText)
             }
 
             return responseJson
